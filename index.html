@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Practice 4</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script defer src="build/bundle.js"></script>
+
+    <style>
+        .task-5-items-view {
+            max-height: 200px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Практическая работа 4</h2>
+    </div>
+
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#task4" role="tab">Show Dialog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#task5" role="tab">Shopping Cart REST Client</a>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-4">
+            <div class="tab-pane active" id="task4" role="tabpanel">
+                <div class="form p-2" style="padding:1em;">
+                    <button type="button" class="btn btn-outline-primary" id="task4-show-dialog-button" data-toggle="modal">
+                        Try it
+                    </button>
+                </div>
+
+                <div id="task4-dialog"></div>
+
+            </div>
+            <div class="tab-pane" id="task5" role="tabpanel">
+                <div class="row">
+                    <div class="panel panel-default col-6">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Cart Items</h3>
+                        </div>
+                        <div class="panel-body task-5-items-view"></div>
+                    </div>
+                    <div class="panel panel-default col-6">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Info</h3>
+                        </div>
+                        <div class="panel-body task-5-info-view"></div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">REST Controller for Cart</h3>
+                    </div>
+                    <div class="panel-body task-5-rest-view">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#task-5-post" role="tab">addItem()</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#task-5-put" role="tab">updateItem()</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#task-5-delete" role="tab">removeItem()</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#task-5-delete-all" role="tab">removeAll()</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content mt-4">
+                            <div class="tab-pane active task-5-post" id="task-5-post" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p><code>Cart::addItem()</code></p>
+                                        <p><code>POST /cart/items</code></p>
+                                    </div>
+                                    <div class="col-8">
+                                        <textarea class="form-control" type="text" id="addItem" placeholder="JSON for POST /cart/items"></textarea>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-success">POST</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane task-5-put" id="task-5-put" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p><code>Cart::updateItem()</code></p>
+                                        <p><code>PUT /cart/items/:id</code></p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>
+                                            <input type="text" placeholder="Item ID" />
+                                        </p>
+                                        <textarea class="form-control" placeholder="Json for PUT /cart/items/:id"></textarea>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-success">PUT</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane task-5-delete" id="task-5-delete" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p><code>Cart::removeItem()</code></p>
+                                        <p><code>DELETE /cart/items/:id</code></p>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" placeholder="Item ID" />
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-success">DELETE</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane task-5-delete-all" id="task-5-delete-all" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p><code>Cart::removeAll()</code></p>
+                                        <p><code>DELETE /cart/items/</code></p>
+                                    </div>
+                                    <div class="col-9">
+                                        <button class="btn btn-success">DELETE ALL</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="task6" role="tabpanel">
+                <div class="row">
+                    <div class="col-8 item-list"></div>
+                    <div class="col-4 shopping-cart">
+                        <h2>Your Cart</h2>
+
+                        <p class="empty-cart-message">Your cart is empty. Buy something!</p>
+                        <ul class="shopping-cart-list"></ul>
+
+                        <div class="shopping-cart-total">
+                            Total: $<span class="total">0</span>
+                            <button class="btn btn-outline-danger btn-sm float-right remove-all d-none">Remove All!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
